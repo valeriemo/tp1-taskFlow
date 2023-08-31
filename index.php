@@ -1,47 +1,37 @@
 <?php
 require_once('class/Crud.php');
+require_once('class/Partial.php');
+
 
 $crud = new Crud;
+
+
+?>
+<?php
+echo Partial::head();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
-</head>
 
 
 <body class="align">
 
-        <div class="grid">
-            <h1>Task Flow</h1>
-            <form action="" method="POST" class="form login">
+    <div class="grid">
+        <h1>Task Flow</h1>
 
-                <div class="form__field">
-                    <label for="login__username"></label>
-                    <input id="login__username" type="text" name="username" class="form__input" placeholder="Username" required>
-                </div>
+        <form action="" method="POST" class="form">
+            <label>
+                <input type="text" name="username"  placeholder="Username" required>
+            </label>
+            <label>
+                <input type="password" name="password"  placeholder="Password" required>
+            </label>
+            <input type="submit" value="Sign In">
+        </form>
 
-                <div class="form__field">
-                    <label for="login__password"></label>
-                    <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
-                </div>
+        <p>Not a member? <a href="user-create.php">Sign up now</a></p>
 
-                <div class="form__field">
-                    <input type="submit" value="Sign In">
-                </div>
+    </div>
 
-            </form>
-
-            <p class="text--center">Not a member? <a href="#">Sign up now</a></p>
-
-        </div>
-
-    </body>
+</body>
 
 </html>
