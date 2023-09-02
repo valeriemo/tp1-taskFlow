@@ -1,9 +1,11 @@
 <?php
 
-class Partial {
+class Partial
+{
 
-    public static function head() {
-    return '
+    public static function head()
+    {
+        return '
     <!DOCTYPE html>
     <html lang="en">
     
@@ -14,5 +16,12 @@ class Partial {
         <link rel="stylesheet" href="assets/css/style.css">
         <title>Document</title>
     </head>';
+    }
+    
+    public static function footer()
+    {
+        return "<footer></footer>
+                </body> 
+                </html>";
     }
 }

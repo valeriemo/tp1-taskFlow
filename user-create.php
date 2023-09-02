@@ -14,7 +14,7 @@ echo Partial::head();
                     <input type="text" name="email"  placeholder="Email" maxlength="45" required>
                 </label>
                 <label>
-                    <input type="password" name="password"  placeholder="Password" minlength="10" maxlength="20" required>
+                    <input type="password" name="password"  placeholder="Password" minlength="8" maxlength="20" required>
                 </label>
                 <input type="submit" value="Sign up">
             </form>

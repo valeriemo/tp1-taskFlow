@@ -18,7 +18,7 @@ echo Partial::head();
     <div class="grid">
         <h1>Task Flow</h1>
 
-        <form action="" method="POST" class="form">
+        <form action="user-login.php" method="POST" class="form">
             <label>
                 <input type="text" name="username"  placeholder="Username" required>
             </label>

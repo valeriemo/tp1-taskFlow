@@ -1,4 +1,6 @@
 <?php
+$id = $_GET['idUser'];
+
 require_once('class/Partial.php');
 echo Partial::head();
 ?>
@@ -18,24 +20,12 @@ echo Partial::head();
             <label> Starting date
                 <input type="date" name="startDate" required>
             </label>
+            <label> Due date
+                <input type="date" name="dueDate" required>
+            </label>
+            <input type="hidden" name="user_idUser" value="<?=$id;?>">
 
-            <fieldset>
-                <legend>Select the level of importance:</legend>
-                <div class="rangee">
-                    <label class="rangee">
-                        High: 
-                        <input type="radio" name="importance" value="high" >
-                    </label>
-                    <label class="rangee">
-                        Mid: 
-                        <input type="radio" name="importance" value="mid">
-                    </label>
-                    <label class="rangee">
-                        Low: 
-                        <input type="radio" name="importance" value="low">
-                    </label>
-                </div>
-            </fieldset>
+
 
             <input type="submit" value="Save">
         </form>
