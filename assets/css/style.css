@@ -203,10 +203,3 @@ table .button-74::before{
     box-shadow: black 2px 2px 0 0;
     transform: translate(2px, 2px);
     }
-
-    @media (min-width: 768px) {
-    .button-74 {
-        min-width: 120px;
-        padding: 0 25px;
-    }
-    }
