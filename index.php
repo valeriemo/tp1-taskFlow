@@ -25,10 +25,10 @@ echo Partial::head();
             <label>
                 <input type="password" name="password"  placeholder="Password" required>
             </label>
-            <input type="submit" value="Sign In">
+            <input class="button-74" type="submit" value="Sign In">
         </form>
 
-        <p>Not a member? <a href="user-create.php">Sign up now</a></p>
+        <p>Not a member? <a class="button-74" href="user-create.php">Sign up now</a></p>
 
     </div>
 

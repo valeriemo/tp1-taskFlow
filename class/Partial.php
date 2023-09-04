@@ -2,7 +2,9 @@
 
 class Partial
 {
-
+    /**
+     * @return le head du HTML
+     */
     public static function head()
     {
         return '
@@ -16,12 +18,5 @@ class Partial
         <link rel="stylesheet" href="assets/css/style.css">
         <title>Document</title>
     </head>';
-    }
-    
-    public static function footer()
-    {
-        return "<footer></footer>
-                </body> 
-                </html>";
     }
 }

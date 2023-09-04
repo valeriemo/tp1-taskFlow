@@ -1,145 +1,212 @@
-
-body{
-    background-color: #E7E6F7;
-    margin: 0;
-    color: black;
-}
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
 
 * {
-box-sizing: border-box;
+    box-sizing: border-box;
 }
-
+body{
+    background-color: #fbeee0;
+    margin: 100px;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 h1{
-    color: #d44179;
+    color: black;
     font-size: 50px;
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
+    font-family: 'Bungee Shade', cursive;
 }
 h2{
     text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
 }
-.grid {
-margin-left: auto;
-margin-right: auto;
-max-width: 60rem;
-background-color: #444347f1;
-padding: 100px;
-border-radius: 20px;
+h3{
+    font-size: 1.5em;
 }
-
-
-html {
-box-sizing: border-box;
-height: 100%;
+span{
+    font-weight: 900;
 }
-
-body {
-background-color: #222323;
-color: #ffffff;
-font-family: 'Open Sans', sans-serif;
-font-size: 14px;
-font-size: 0.875rem;
-font-weight: 400;
-height: 100%;
-line-height: 1.5;
-margin: 50px;
-min-height: 100vh;
+fieldset{
+    margin-bottom: 20px;
+    padding: 20px;
 }
-
-hgroup{
+input{
+    background-color: #fbeee0;
+    border: 2px solid black;
+    box-shadow: black 4px 4px 0 0;
+    color: black;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
     text-align: center;
+    text-decoration: none;
 }
-
-
-input {
-background-color: #0b1219;
-border: 0;
-border-radius: 10px;
-color: #ffffff;
-font: inherit;
-margin: 0;
-outline: 0;
-padding: 10px;
-width: 100%;
+textarea{
+    background-color: #fbeee0;
+    border: 2px solid black;
+    box-shadow: black 4px 4px 0 0;
+    color: black;
+    display: inline-block;
+    padding: 0 18px;
+    line-height: 20px;
 }
-
-
-
 label{
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
 }
-
 p {
-    margin-bottom: 24px;
-    margin-top: 44px;
-    color: #d44179;
+    color: black;
     font-size: 24px;
 }
-
-a{
-    background-color: #606468;
-    padding: 10px;
-    border-radius: 10px;
-    color: #eee;
-    outline: 0;
+th, td {
+    padding-bottom: 10px;
+    padding-right: 20px;
+}
+table{
+    margin-bottom: 30px;
+}
+table a{
     text-decoration: none;
+    color: black;
 }
-a:hover{
-    background-color: #d44179;
-    color: #ffffff;
-}
-
 /* Les class */
 
 .rangee{
     display: flex;
     gap: 8px;
     align-items: baseline;
+    justify-content: space-around;
 }
 .project{
     display: flex;
     padding: 20px;
     flex-direction: column;
-    border: 1px palevioletred solid;
+    border: 2px #7CE577 solid;
     max-width: 600px;
     max-height: max-content;    
     margin-bottom: 50px; 
+    text-align: left;
+    box-shadow: #7CE577 6px 6px 0 0;
 }
 .project p{
-    font-size: 16px;
+    font-size: 18px;
+    max-width: max-content;
+    align-self: center;
+    touch-action: none;
+    pointer-events: none;
 }
 .project > div:first-of-type{
-    margin-bottom: 20px;
-    background-color: rgba(84, 78, 84, 0.356);
     padding: 20px;
+    display: flex;
+    gap: 10px;
 }
-.project div h4{
-    text-align: center;
-    border: 1px solid #d44179;
-    padding: 10px;
-    margin-bottom: 40px;
+
+table .button-74{
+    line-height: 25px;
+    font-size: 14px;
+    padding: 0 10px;
+    min-width: max-content;
+}
+table .button-74::before{
+    content: "✘";
 }
 .form {
     margin: 14px;
     padding: 40px;
 }
-.btn{
+.grid {
     margin-left: auto;
-    display: flex;
-    gap: 20px;
-    max-width: max-content;
+    margin-right: auto;
+    max-width: 60rem;
+    background-color: #7CE577;
+    padding: 100px;
+    border-radius: 20px;
+    margin-bottom: 100px;
 }
+
+.grid > p{
+    text-align: center;
+    font-weight: 700;
+}    
 .align {
-    margin-top: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+.task-container{
+    display: flex;
+    flex-direction: column;
+}
+.task-container > a{
+    max-width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+.task-container h4{
+    border-radius: 0px;
+    padding: 0;
+    pointer-events: none;
+    touch-action: none;
 }
 .task{
     display: flex;
     justify-content: space-between;
     margin-bottom: 16px;
 }
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px
+    
+}
+.btn{
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+/* CSS */
+.button-74 {
+    background-color: #fbeee0;
+    border: 2px solid black;
+    border-radius: 30px;
+    box-shadow: black 4px 4px 0 0;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    touch-action: manipulation;
+    }
+
+    .button-74:hover {
+    background-color: #bfffbb;
+    }
+
+    .button-74:active {
+    box-shadow: black 2px 2px 0 0;
+    transform: translate(2px, 2px);
+    }
+
+    @media (min-width: 768px) {
+    .button-74 {
+        min-width: 120px;
+        padding: 0 25px;
+    }
+    }

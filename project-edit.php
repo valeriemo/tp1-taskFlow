@@ -13,7 +13,7 @@ require_once('class/Partial.php');
 echo Partial::head();
 ?>
 
-<body class="align">
+<body>
     <div class="grid">
         <h1>Task Flow</h1>
         <h2>Update your project</h2>
@@ -33,7 +33,7 @@ echo Partial::head();
                 <input type="date" name="dueDate" value="<?=$dueDate;?>" required>
             </label>
             <input type="hidden" name="user_idUser" value="<?=$user_idUser;?>">
-            <input type="submit" value="Save">
+            <input class="button-74" type="submit" value="Save">
         </form>
     </div>
 </body>
