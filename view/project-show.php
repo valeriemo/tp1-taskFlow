@@ -10,10 +10,10 @@
             <p class="button-74"><span>Due date : </span>{{ project.dueDate}}</p>
             <div class="task-container">
                 <h4 class="button-74">To do :</h4>
-                <!-- <p>No task to display.</p> -->
                 <a class="button-74" href="{{path}}task/create/{{project.idProject}}">New task</a>
-                <!-- Les conditions ne marchent pas ???  -->
-                {% if task|length >= 1 %}
+                {% if task == 'Nothing' %}
+                <p>No task</p>
+                {% else %}
                 <table>
                     <thead>
                         <tr>
@@ -50,7 +50,7 @@
         </section>
     </section>
     <div class="rangee">
-    <a class="button-74" href="{{path}}project/edit/{{project.idProject}}">Edit this project</a>
+        <a class="button-74" href="{{path}}project/edit/{{project.idProject}}">Edit this project</a>
     </div>
 
 </main>
