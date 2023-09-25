@@ -3,9 +3,22 @@
 * {
     box-sizing: border-box;
 }
+nav{
+    height: 50px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+nav > a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2em;
+}
 body{
     background-color: #fbeee0;
-    margin: 100px;
     color: black;
     font-family: 'Open Sans', sans-serif;
     min-height: 100vh;
@@ -13,20 +26,27 @@ body{
     flex-direction: column;
     align-items: center;
 }
+
 h1{
     color: black;
     font-size: 50px;
     text-align: center;
     margin-bottom: 30px;
     font-family: 'Bungee Shade', cursive;
+    line-height: 1.4em;
 }
 h2{
     text-align: center;
     font-size: 2em;
     margin-bottom: 20px;
+    line-height: 1.4em;
 }
 h3{
     font-size: 1.5em;
+    text-align: center;
+    text-decoration: 2px solid underline #7CE577;
+    margin-bottom: 50px;
+    line-height: 1.4em;
 }
 span{
     font-weight: 900;
@@ -78,7 +98,6 @@ table a{
     color: black;
 }
 /* Les class */
-
 .rangee{
     display: flex;
     gap: 8px;
@@ -90,11 +109,42 @@ table a{
     padding: 20px;
     flex-direction: column;
     border: 2px #7CE577 solid;
-    max-width: 600px;
+    max-width: 1200px;
     max-height: max-content;    
     margin-bottom: 50px; 
     text-align: left;
     box-shadow: #7CE577 6px 6px 0 0;
+
+    & table{
+    min-width: 700px;
+
+    & td, th{
+        padding: 15px 10px;
+    }
+    & td:last-of-type{
+        font-weight: 800;
+        }
+    & td:first-of-type{
+        text-decoration: 2px #7CE577 underline;
+        & :hover{
+            font-weight: 700;
+        }
+    }
+    } 
+}
+.project.boite{
+    max-width: 270px;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+section a{
+    text-decoration: none;
+    color: black;
+}
+.project.boite:hover{
+    background-color: #7de57743;
 }
 .project p{
     font-size: 18px;
@@ -108,7 +158,11 @@ table a{
     display: flex;
     gap: 10px;
 }
-
+.liste-projet{
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
 table .button-74{
     line-height: 25px;
     font-size: 14px;
@@ -131,7 +185,6 @@ table .button-74::before{
     border-radius: 20px;
     margin-bottom: 100px;
 }
-
 .grid > p{
     text-align: center;
     font-weight: 700;
@@ -175,8 +228,6 @@ table .button-74::before{
     margin-top: 50px;
     margin-bottom: 30px;
 }
-
-/* CSS */
 .button-74 {
     background-color: #fbeee0;
     border: 2px solid black;
@@ -193,13 +244,21 @@ table .button-74::before{
     text-decoration: none;
     user-select: none;
     touch-action: manipulation;
-    }
-
-    .button-74:hover {
+}
+.button-74:hover {
     background-color: #bfffbb;
-    }
-
-    .button-74:active {
+}
+.button-74:active {
     box-shadow: black 2px 2px 0 0;
     transform: translate(2px, 2px);
-    }
+}
+.center{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.button-74.sml{
+    max-width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}

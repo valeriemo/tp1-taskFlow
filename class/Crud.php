@@ -59,7 +59,7 @@ class Crud extends PDO
      * @param string $url [Optionel] Le nom du URL pour la redirection
      * @return  Un tableau associatif correspondant à la query
      */
-    public function selectId($table, $value, $field = 'idUser', $url = 'index')
+    public function selectAllById($table, $value, $field = 'idUser', $url = 'index')
     {
         $sql = "SELECT * FROM $table WHERE $field = :$field";
 
