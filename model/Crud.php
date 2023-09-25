@@ -5,7 +5,7 @@ abstract class Crud extends PDO
     public function __construct()
     {
         // Appel du constructeur de la classe parente PDO pour établir la connexion à la base de données
-        parent::__construct('mysql:host=localhost; dbname=taskflow; port=3306; charset=utf8', 'root', '');
+        parent::__construct('mysql:host=localhost; dbname=e0673328; port=3306; charset=utf8', 'e0673328', 'N1xKtgaHjkRpJEAvK0H1');
     }
 
     // Méthode pour effectuer une sélection (READ) de tous les enregistrements
