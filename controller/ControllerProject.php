@@ -1,13 +1,9 @@
 <?php
 
 // Inclusion du modèle "client"
-RequirePage::model('user');
 RequirePage::model('project');
 RequirePage::model('task');
 
-
-
-// Définition de la classe "ControllerClient" qui étend la classe de base "Controller"
 class ControllerProject extends Controller
 {
 
@@ -18,23 +14,21 @@ class ControllerProject extends Controller
         Twig::render("project-index.php", ['project' => $select]);
     }
 
-    // Méthode pour afficher le formulaire de création d'un client
+    // Méthode pour afficher le formulaire de création d'un projet
     public function create($id)
     {
         Twig::render("project-create.php", ['idUser' => $id]);
     }
 
-    // Méthode pour traiter la soumission du formulaire de création d'un client
+    // Méthode pour traiter la soumission du formulaire de création d'un projet
     public function store()
     {
         $project = new Project; 
         $insert = $project->insert($_POST); 
-
-        
         RequirePage::redirect('project');
     }
 
-    // Méthode pour afficher les détails d'un client spécifique
+    // Méthode pour afficher les détails d'un projet spécifique
     public function show($id)
     {
         $project = new Project; 
@@ -44,8 +38,6 @@ class ControllerProject extends Controller
         Twig::render('project-show.php', ['project' => $selectId,'task' => $allTask]);
     }
 
-
-    // Méthode pour afficher le formulaire de modification d'un projet spécifique
     public function edit($id)
     {
         $project = new Project; 
@@ -58,7 +50,7 @@ class ControllerProject extends Controller
         $project = new Project;
         $update = $project->update($_POST);
         if ($update) {
-            RequirePage::redirect('home');
+            RequirePage::redirect('project');
         } else {
             print_r($update);
         }

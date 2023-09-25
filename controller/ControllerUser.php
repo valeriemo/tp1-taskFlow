@@ -12,6 +12,7 @@ class ControllerUser extends Controller
         $login = $user->login($_POST); 
         $project = new Project; 
         $allProjects = $project->selectAllById($login['idUser']);
+        
         Twig::render("user-index.php", ['user' => $login, 'project' => $allProjects]);
     }
 

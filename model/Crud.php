@@ -1,5 +1,4 @@
 <?php
-// une classe abstraite est une classe spéciale qui ne peut pas être instanciée directement. Au lieu de cela, elle sert de modèle ou de base pour d'autres classes.
 abstract class Crud extends PDO
 {
 
@@ -12,31 +11,23 @@ abstract class Crud extends PDO
     // Méthode pour effectuer une sélection (READ) de tous les enregistrements
     public function select($field = 'id', $order = null)
     {
-        // Construction de la requête SQL pour sélectionner tous les enregistrements de la table
         $sql = "SELECT * FROM $this->table ORDER BY $field $order";
-        // Exécution de la requête SQL
         $stmt = $this->query($sql);
-        // Récupération de tous les résultats sous forme de tableau associatif
         return $stmt->fetchAll();
     }
 
     // Méthode pour effectuer une sélection (READ) par ID
     public function selectId($value)
     {
-        // Construction de la requête SQL pour sélectionner un enregistrement par ID
         $sql = "SELECT * FROM $this->table WHERE $this->primaryKey = :$this->primaryKey";
-        // Préparation de la requête SQL
         $stmt = $this->prepare($sql);
-        // Liaison de la valeur de l'ID à la requête SQL
         $stmt->bindValue(":$this->primaryKey", $value);
         $stmt->execute();
-        // Comptage du nombre de résultats
         $count = $stmt->rowCount();
+
         if ($count == 1) {
-            // S'il y a un seul résultat, retourne cet enregistrement
             return $stmt->fetch();
         } else {
-            // Sinon, redirige vers une page d'erreur
             header("location:../../home/error");
             exit;
         }
@@ -52,13 +43,11 @@ abstract class Crud extends PDO
         }
 
         $sql = "SELECT * FROM $this->table WHERE $key = :$key";
-        // Préparation de la requête SQL
         $stmt = $this->prepare($sql);
-        // Liaison de la valeur de l'ID à la requête SQL
         $stmt->bindValue(":$key", $value);
-
         $stmt->execute();
         $count = $stmt->rowCount();
+        
         if ($count == 1) {
             return $stmt->fetch();
         } elseif ($count > 1) {
@@ -69,8 +58,6 @@ abstract class Crud extends PDO
             exit;
         }
     }
-
-
 
     public function login($data, $field = 'username', $field2 = 'password')
     {
@@ -90,8 +77,6 @@ abstract class Crud extends PDO
         }
     }
 
-
-
     // Méthode pour effectuer une insertion (CREATE) d'un nouvel enregistrement
     public function insert($data)
     {
@@ -103,8 +88,11 @@ abstract class Crud extends PDO
         foreach ($data as $key => $value) {
             $stmt->bindValue(":$key", $value);
         }
-        $stmt->execute();
-        return $this->lastInsertId();
+        if ($stmt->execute()) {
+            return $this->lastInsertId();
+        } else {
+            return $stmt->errorInfo();
+        }
     }
 
     // Méthode pour effectuer une mise à jour (UPDATE) d'un enregistrement

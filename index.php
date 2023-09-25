@@ -50,25 +50,3 @@ if ($url == '/') {    // Si l'URL est la racine (page d'accueil)
 }
 
 
-// <body class="align">
-
-//     <div class="grid">
-//         <h1>Task Flow</h1>
-
-//         <form action="user-login.php" method="POST" class="form">
-//             <label>
-//                 <input type="text" name="username"  placeholder="Username" required>
-//             </label>
-//             <label>
-//                 <input type="password" name="password"  placeholder="Password" required>
-//             </label>
-//             <input class="button-74" type="submit" value="Sign In">
-//         </form>
-
-//         <p>Not a member? <a class="button-74" href="user-create.php">Sign up now</a></p>
-
-//     </div>
-
-// </body>
-
-// </html> -->

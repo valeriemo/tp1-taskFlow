@@ -1,8 +1,5 @@
 <?php
 
-/**
- * Classe Twig - Utilitaire pour utiliser le moteur de template Twig dans un projet MVC.
- */
 class Twig
 {
     /**
@@ -14,18 +11,12 @@ class Twig
      */
     static public function render($template, $data=array())
     {
-        // Configuration du chargeur pour charger les modèles depuis le répertoire "view".
         $loader = new \Twig\Loader\FilesystemLoader('view');
-        
-        // Configuration de l'environnement Twig avec auto-rechargement activé pour le développement.
         $twig = new \Twig\Environment($loader, array(
             'auto_reload' => true,
         ));
 
-        // Ajout d'une variable globale "$path" pour construire des liens absolus.
-        $twig->addGlobal('path', 'http://localhost:8080/repo/tp1-taskFlow/');         // ATTENTION SUR WEBDEV CHEMIN A CHANGE !!!!!!!!!!!!!!!!!!!
-
-        // Génération du contenu HTML en utilisant le modèle spécifié et les données associées.
+        $twig->addGlobal('path', PATH_DIR);         
         echo $twig->render($template, $data);
     }
 }

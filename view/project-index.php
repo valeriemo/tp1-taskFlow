@@ -1,7 +1,6 @@
 {{ include('header.php', {title: 'liste de project'}) }}
 
 <main class="project">
-    <a class="button-74 sml" href="{{ path }}project/create">Create a New project</a>
     <h1>All projects</h1>
     <table>
         <tr>

@@ -1,5 +1,4 @@
 <?php
-
 RequirePage::model('task');
 
 class ControllerTask extends Controller
@@ -13,7 +12,6 @@ class ControllerTask extends Controller
         $taskShow = $task->selectAllById($id);
     }
 
-    // Méthode pour afficher le formulaire de création d'un client
     public function create($id)
     {
         Twig::render("task-create.php", ['idProject' => $id]);
@@ -23,7 +21,7 @@ class ControllerTask extends Controller
     {
         $task = new task; 
         $insert = $task->insert($_POST); 
-        RequirePage::redirect('home');
+        RequirePage::redirect('project');
     }
 
     public function delete($id){
