@@ -4,7 +4,7 @@
 
 ✦✧✩✫✬✭✮✯✰✱✲✳✴✵✶✷✸✹✺✻✼✽✾✿❀❁❂❃❄❅❆❇❈❉❊❋
 
-### Lien GitHub : https://github.com/valeriemo/tp1-taskFlow.git
+### Lien GitHub : https://github.com/valeriemo/tp2-taskFlow.git
 
 ✦✧✩✫✬✭✮✯✰✱✲✳✴✵✶✷✸✹✺✻✼✽✾✿❀❁❂❃❄❅❆❇❈❉❊❋
 
