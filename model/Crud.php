@@ -47,15 +47,11 @@ abstract class Crud extends PDO
         $stmt->bindValue(":$key", $value);
         $stmt->execute();
         $count = $stmt->rowCount();
-        
-        if ($count == 1) {
-            return $stmt->fetch();
-        } elseif ($count > 1) {
+
+        if ($count >= 1) {
             return $stmt->fetchAll();
         } else {
             return "Nothing";
-            header("location:../../home/error");
-            exit;
         }
     }
 

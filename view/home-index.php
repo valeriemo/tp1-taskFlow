@@ -1,22 +1,19 @@
 {{ include('header.php', {title: 'Welcome'}) }}  
 
-{# commments in twig #}
 
 <main>
 
     <div class="grid">
             <h1>Task Flow</h1>
-            <form action="{{ path }}user" method="POST" class="form">
+            <form  action="{{path}}login/auth" method="POST" class="form">
                 <label>
-                    <input type="text" name="username"  placeholder="Username" minlength="3" maxlength="20" required>
+                    <input type="text" name="username"  placeholder="Username" minlength="3" maxlength="20" required value="{{data.username}}">
                 </label>
                 <label>
-                    <input type="password" name="password"  placeholder="Password" minlength="8" maxlength="20" required>
+                    <input type="password" name="password"  placeholder="Password" minlength="8" maxlength="20" required value="{{data.password}}">
                 </label>
-                <input type="submit" value="Sign in">
+                <input type="submit" value="login">
             </form>
-            <a class="button-74" href="{{ path }}user/create">New user</a>
-
     </div>
 </main>
 </body>

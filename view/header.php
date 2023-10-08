@@ -13,4 +13,7 @@
     <nav>
         <a class="button-74" href="{{ path }}">Home</a>
         <h1>Welcome to taskflow</h1>
+        <a class="button-74" href="{{path}}login">Login</a>
+        <a class="button-74" href="{{path}}login/logout">Logout</a>
+        <a class="button-74" href="{{path}}user/create">New user</a>
     </nav>

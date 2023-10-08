@@ -12,6 +12,10 @@ class RequirePage
         $filePath = 'model/' . $page . '.php';
         return require_once($filePath);
     }
+    
+    static public function library($page){
+        return require_once('library/'.$page.'.php');
+    }
 
     /**
      * Effectue une redirection HTTP vers une page spécifiée.

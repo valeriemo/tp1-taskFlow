@@ -13,7 +13,9 @@
                 <!-- <p>No task to display.</p> -->
                 <a class="button-74" href="{{path}}task/create/{{project.idProject}}">New task</a>
                 <!-- Les conditions ne marchent pas ???  -->
-                {% if task|length >= 1 %}
+                {% if task == 'Nothing' %}
+                <p>No task</p>
+                {% else %}
                 <table>
                     <thead>
                         <tr>
