@@ -1,7 +1,7 @@
 {{ include('header.php', {title: 'liste de users'}) }}
 
 <main>
-<h1>Hi {{ user.username}}</h1>
+<h1>Hi {{user.username}}</h1>
 
 <h3>Your projects</h3>
 

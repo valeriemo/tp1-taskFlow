@@ -79,11 +79,11 @@
         }
 
         /**
-         * Pattern da applicare al riconoscimento
-         * dell'espressione regolare
+         * Valide la valeur actuelle du champ en utilisant un motif spécifié par son nom.
          *
-         * @param string $name nome del pattern
-         * @return this
+         * @param string $name Le nom du motif de validation à utiliser.
+         *
+         * @return $this L'instance de la classe actuelle pour permettre la chaînage des méthodes.
          */
         public function pattern($name){
 
@@ -102,14 +102,14 @@
 
             }
             return $this;
-
         }
 
         /**
-         * Pattern personalizzata
+         * Valide la valeur actuelle du champ en utilisant un motif personnalisé.
          *
-         * @param string $pattern
-         * @return this
+         * @param string $pattern Le motif de validation personnalisé au format regex.
+         *
+         * @return $this 
          */
         public function customPattern($pattern){
 
@@ -188,11 +188,11 @@
         }
 
         /**
-         * Confronta con il valore di
-         * un altro campo
+         * Vérifie si la valeur actuelle du champ est égale à une valeur spécifiée.
          *
-         * @param mixed $value
-         * @return this
+         * @param mixed $value La valeur à comparer avec la valeur du champ.
+         *
+         * @return $this 
          */
         public function equal($value){
 
@@ -321,33 +321,33 @@
         }
 
         /**
-         * Verifica se il valore è
-         * una lettera dell'alfabeto
+         * Vérifie si la valeur passée en argument est composée uniquement de lettres alphabétiques (a-zA-Z).
          *
-         * @param mixed $value
-         * @return boolean
+         * @param mixed $value La valeur à vérifier.
+         *
+         * @return bool True si la valeur est composée uniquement de lettres alphabétiques, false sinon.
          */
         public static function is_alpha($value){
             if(filter_var($value, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => "/^[a-zA-Z]+$/")))) return true;
         }
 
         /**
-         * Verifica se il valore è
-         * una lettera o un numero
+         * Vérifie si la valeur passée en argument est composée uniquement de lettres alphabétiques (a-zA-Z) et de chiffres (0-9).
          *
-         * @param mixed $value
-         * @return boolean
+         * @param mixed $value La valeur à vérifier.
+         *
+         * @return bool True si la valeur est composée uniquement de lettres alphabétiques et de chiffres, false sinon.
          */
         public static function is_alphanum($value){
             if(filter_var($value, FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => "/^[a-zA-Z0-9]+$/")))) return true;
         }
 
-        /**
-         * Verifica se il valore è
-         * un url
+       /**
+         * Vérifie si la valeur passée en argument est une URL valide.
          *
-         * @param mixed $value
-         * @return boolean
+         * @param string $value La valeur à vérifier.
+         *
+         * @return bool Retourne true si la valeur est une URL valide, sinon retourne false.
          */
         public static function is_url($value){
             if(filter_var($value, FILTER_VALIDATE_URL)) return true;
@@ -365,11 +365,11 @@
         }
 
         /**
-         * Verifica se il valore è
-         * true o false
+         * Vérifie si la valeur passée en argument est un booléen valide.
          *
-         * @param mixed $value
-         * @return boolean
+         * @param mixed $value La valeur à vérifier.
+         *
+         * @return bool Retourne true si la valeur est un booléen valide, sinon retourne false.
          */
         public static function is_bool($value){
             if(is_bool(filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE))) return true;

@@ -15,23 +15,22 @@ class User extends Crud{
         'password',
     ];
 
-    public function checkUser($username, $password){             
-        $sql = "SELECT * FROM $this->table WHERE username = ?";
+    public function checkUser($username, $password){ 
+         
+        $sql = "SELECT * FROM $this->table WHERE username = :$username";
         $stmt = $this->prepare($sql);
-        $stmt->execute(array($username));
-
+        $stmt->bindValue(":$username", $username);
+        $stmt->execute();
         $count = $stmt->rowCount();
-
+        
         if ($count === 1) {
             $user = $stmt->fetch();
-
             if (password_verify($password, $user['password'])) {
                 session_regenerate_id();
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['user_nom'] = $user['nom'];
+                $_SESSION['idUser'] = $user['idUser'];
+                $_SESSION['username'] = $user['username'];
                 $_SESSION['fingerPrint'] = md5($_SERVER['REMOTE_ADDT'] . $_SERVER['HTTP_USER_AGENT']);
                 return true;
-                //RequirePage::redirect('client'); ---- > c'est dans le controller quon choisie la redirection
             } else {
                 echo 'no';
             }

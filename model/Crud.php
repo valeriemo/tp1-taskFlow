@@ -41,11 +41,13 @@ abstract class Crud extends PDO
      */
     public function selectAllById($value)
     {
-        if ($this->table == 'project') {
-            $key = $this->foreignKey;
-        } elseif ($this->table == 'task') {
-            $key = $this->foreignKey2;
-        }
+        // if ($this->table == 'project') {
+        //     $key = $this->foreignKey;
+        //     // si c'est task
+        // } elseif ($this->table == 'task') {
+        //     $key = $this->foreignKey2;
+        // }
+
         $sql = "SELECT * FROM $this->table WHERE $key = :$key";
         $stmt = $this->prepare($sql);
         $stmt->bindValue(":$key", $value);
@@ -59,45 +61,32 @@ abstract class Crud extends PDO
         }
     }
 
-    /**
-     * Méthode qui vérifie le username et le password de l'utilisateur
-     */
-    public function login($data, $field = 'username', $field2 = 'password')
-    {
-        $username = $data['username'];
-        $password = $data['password'];
-        $sql = "SELECT * FROM user WHERE $field = :$field AND $field2 = :$field2";
-        $stmt = $this->prepare($sql);
-        $stmt->bindValue(":$field", $username);
-        $stmt->bindValue(":$field2", $password);
-        $stmt->execute();
-        $count = $stmt->rowCount();
-        if ($count == 1) {
-            return $stmt->fetch();
-        } else {
-            header("location:../../home/error");
-            exit;
-        }
-    }
 
-    /**
-     * Méthode pour effectuer une insertion (CREATE) d'un nouvel enregistrement
-     */
-    public function insert($data)
-    {
+
+    // Méthode pour effectuer une insertion (CREATE) d'un nouvel enregistrement
+    public function insert($data){
+        $data_keys = array_fill_keys($this->fillable, '');
+        // print_r($this->fillable);
+        // echo '<br><br>';
+        // print_r($data_keys);
+        // echo '<br><br>';
+        // print_r($data);
+        $data = array_intersect_key($data, $data_keys);
+        // print_r($data);
+        // die();
         $fieldName = implode(', ', array_keys($data));
-        $fieldValue = ":" . implode(', :', array_keys($data));
+        $fieldValue = ":".implode(', :', array_keys($data));
         $sql = "INSERT INTO $this->table ($fieldName) VALUES ($fieldValue)";
-        $stmt = $this->prepare($sql);
 
-        foreach ($data as $key => $value) {
+       //return $sql;
+
+       $stmt = $this->prepare($sql);
+        foreach($data as $key=>$value){
             $stmt->bindValue(":$key", $value);
         }
-        if ($stmt->execute()) {
-            return $this->lastInsertId();
-        } else {
-            return $stmt->errorInfo();
-        }
+       $stmt->execute();
+
+       return $this->lastInsertId();
     }
 
     /**
