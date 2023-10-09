@@ -4,11 +4,12 @@ abstract class Crud extends PDO
 
     public function __construct()
     {
-        // Appel du constructeur de la classe parente PDO pour établir la connexion à la base de données
-        parent::__construct('mysql:host=localhost; dbname=taskflow; port=3306; charset=utf8', 'root', '');
+        parent::__construct('mysql:host=localhost; dbname=e0673328; port=3306; charset=utf8', 'e0673328', 'N1xKtgaHjkRpJEAvK0H1');
     }
 
-    // Méthode pour effectuer une sélection (READ) de tous les enregistrements
+    /**
+     * Méthode pour effectuer une sélection (READ) de tous les enregistrements
+     */
     public function select($field = 'id', $order = null)
     {
         $sql = "SELECT * FROM $this->table ORDER BY $field $order";
@@ -16,7 +17,9 @@ abstract class Crud extends PDO
         return $stmt->fetchAll();
     }
 
-    // Méthode pour effectuer une sélection (READ) par ID
+    /**
+     *  Méthode pour effectuer une sélection (READ) par ID
+     */
     public function selectId($value)
     {
         $sql = "SELECT * FROM $this->table WHERE $this->primaryKey = :$this->primaryKey";
@@ -33,15 +36,16 @@ abstract class Crud extends PDO
         }
     }
 
+    /**
+     * Méthode pour sélectionner plusieurs éléments avec une foreign key
+     */
     public function selectAllById($value)
     {
         if ($this->table == 'project') {
             $key = $this->foreignKey;
-            // si c'est task
         } elseif ($this->table == 'task') {
             $key = $this->foreignKey2;
         }
-
         $sql = "SELECT * FROM $this->table WHERE $key = :$key";
         $stmt = $this->prepare($sql);
         $stmt->bindValue(":$key", $value);
@@ -55,6 +59,9 @@ abstract class Crud extends PDO
         }
     }
 
+    /**
+     * Méthode qui vérifie le username et le password de l'utilisateur
+     */
     public function login($data, $field = 'username', $field2 = 'password')
     {
         $username = $data['username'];
@@ -73,7 +80,9 @@ abstract class Crud extends PDO
         }
     }
 
-    // Méthode pour effectuer une insertion (CREATE) d'un nouvel enregistrement
+    /**
+     * Méthode pour effectuer une insertion (CREATE) d'un nouvel enregistrement
+     */
     public function insert($data)
     {
         $fieldName = implode(', ', array_keys($data));
@@ -91,7 +100,9 @@ abstract class Crud extends PDO
         }
     }
 
-    // Méthode pour effectuer une mise à jour (UPDATE) d'un enregistrement
+    /**
+     * Méthode pour effectuer une mise à jour (UPDATE) d'un enregistrement
+     */
     public function update($data)
     {
         $fieldName = Null;
@@ -110,7 +121,9 @@ abstract class Crud extends PDO
             return $stmt->errorInfo();
         }
     }
-
+    /**
+     * Méthode pour delete une ligne de la base de donnée
+     */
     public function delete($value)
     {
         $sql = "DELETE FROM $this->table WHERE $this->primaryKey = :$this->primaryKey";

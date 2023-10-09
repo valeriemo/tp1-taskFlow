@@ -1,8 +1,8 @@
 <?php
 
 // Inclusion du modèle "client"
-RequirePage::model('project');
-RequirePage::model('task');
+RequirePage::model('Project');
+RequirePage::model('Task');
 
 class ControllerProject extends Controller
 {

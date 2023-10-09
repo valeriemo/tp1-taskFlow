@@ -1,5 +1,5 @@
 <?php
-RequirePage::model('task');
+RequirePage::model('Task');
 
 class ControllerTask extends Controller
 {

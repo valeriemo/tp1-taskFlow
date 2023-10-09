@@ -4,7 +4,7 @@
 
 ✦✧✩✫✬✭✮✯✰✱✲✳✴✵✶✷✸✹✺✻✼✽✾✿❀❁❂❃❄❅❆❇❈❉❊❋
 
-### Lien GitHub : https://github.com/valeriemo/tp1-taskFlow.git
+### Lien GitHub : https://github.com/valeriemo/tp2-taskFlow.git
 
 ✦✧✩✫✬✭✮✯✰✱✲✳✴✵✶✷✸✹✺✻✼✽✾✿❀❁❂❃❄❅❆❇❈❉❊❋
 
@@ -15,3 +15,4 @@ Password : vampire1234
 ✦✧✩✫✬✭✮✯✰✱✲✳✴✵✶✷✸✹✺✻✼✽✾✿❀❁❂❃❄❅❆❇❈❉❊❋
 
 ### Lien vers WebDev : 
+https://e0673328.webdev.cmaisonneuve.qc.ca/web22645/tp2-taskFlow/

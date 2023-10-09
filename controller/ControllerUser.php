@@ -1,6 +1,6 @@
 <?php
-RequirePage::model('user');
-RequirePage::model('project');
+RequirePage::model('User');
+RequirePage::model('Project');
 
 
 class ControllerUser extends Controller
