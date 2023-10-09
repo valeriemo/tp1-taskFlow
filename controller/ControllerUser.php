@@ -8,11 +8,13 @@ class ControllerUser extends Controller
 
     public function index()
     {
+        
         // $user = new User; 
         // $login = $user->login($_POST); 
         // $project = new Project; 
         // $allProjects = $project->selectAllById($login['idUser']);
-        
+        //CheckSession::sessionAuth();
+
         // je vais verifier la session et aller chercher le idUser
         Twig::render("user-index.php");
     }
@@ -41,7 +43,7 @@ class ControllerUser extends Controller
         RequirePage::library('Validation');
         $val = new Validation();
     
-        $val->name('username')->value($username)->max(20)->min(8);
+        $val->name('username')->value($username)->max(20)->min(4);
         $val->name('password')->value($password)->pattern('alphanum')->min(6)->max(20);
         $val->name('email')->value($email)->pattern('email')->required()->max(50);
 

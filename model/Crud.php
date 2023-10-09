@@ -4,7 +4,7 @@ abstract class Crud extends PDO
 
     public function __construct()
     {
-        parent::__construct('mysql:host=localhost; dbname=e0673328; port=3306; charset=utf8', 'e0673328', 'N1xKtgaHjkRpJEAvK0H1');
+        parent::__construct('mysql:host=localhost; dbname=taskflow; port=3306; charset=utf8', 'root');
     }
 
     /**
@@ -60,9 +60,6 @@ abstract class Crud extends PDO
             return "Nothing";
         }
     }
-
-
-
     // Méthode pour effectuer une insertion (CREATE) d'un nouvel enregistrement
     public function insert($data){
         $data_keys = array_fill_keys($this->fillable, '');

@@ -5,7 +5,6 @@ RequirePage::model('User');
 class ControllerLogin extends Controller{
 
     public function index(){
-        
         Twig::render('login.php');
     }
 
@@ -28,11 +27,8 @@ class ControllerLogin extends Controller{
         if ($val->isSuccess()) {
             $user = new User;
             if($user->checkUser($username, $password)){
-
                 RequirePage::redirect('user/index');
             }else{
-                var_dump("ca marche pas", $username);
-                die();
                 RequirePage::redirect('home/error');
             }
             

@@ -2,6 +2,7 @@
 
 <main>
 <h1>Hi {{user.username}}</h1>
+<h2>{{user.idUser}}</h2>
 
 <h3>Your projects</h3>
 
