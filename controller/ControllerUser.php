@@ -1,28 +1,32 @@
 <?php
 RequirePage::model('User');
 RequirePage::model('Project');
+RequirePage::model('Privilege');
 
 
 class ControllerUser extends Controller
 {
-
+    // Page HOME de l'utilisateur
     public function index()
     {
-        
-        // $user = new User; 
-        // $login = $user->login($_POST); 
-        // $project = new Project; 
-        // $allProjects = $project->selectAllById($login['idUser']);
-        //CheckSession::sessionAuth();
-
+        CheckSession::sessionAuth();
+        var_dump($_SESSION['idUser']);
+        //Je vais chercher les infos de l'utilisateur connecté
+        $user = new User;
+        $select = $user->selectId($_SESSION['idUser']);
+        //Je vais chercher les projets de l'utilisateur connecté
+        $projectUser = new Project;
+        $projects = $projectUser->selectAllById($_SESSION['idUser']); 
         // je vais verifier la session et aller chercher le idUser
-        Twig::render("user-index.php");
+        Twig::render("user-index.php", ['projects' => $projects, 'user' => $select]);
     }
 
     // Méthode pour afficher le formulaire de création d'un client
     public function create()
     {
-        Twig::render("user-create.php");
+        $privilege = new Privilege;
+        $selectPrivilege = $privilege->select('idPri');
+        Twig::render("user-create.php", ['privileges' => $selectPrivilege]);
     }
 
 
@@ -77,8 +81,6 @@ class ControllerUser extends Controller
             Twig::render('user-create.php', ['errors' => $errors]);
         }
     }
-
-
 
 
     // Méthode pour afficher les détails d'un client spécifique

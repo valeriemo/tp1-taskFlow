@@ -1,4 +1,5 @@
 <?php
+session_start();
 define('PATH_DIR', 'http://localhost:8080/repo/tp1-taskFlow/');
 require_once(__DIR__ . '/controller/Controller.php');
 require_once(__DIR__ . '/library/RequirePage.php');

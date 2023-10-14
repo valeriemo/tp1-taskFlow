@@ -29,8 +29,12 @@ class ControllerProject extends Controller
     }
 
     // Méthode pour afficher les détails d'un projet spécifique
-    public function show($id)
+    public function show($id = null)
     {
+        // Méthode pour protéger l'accès à la page
+        if ($id == null) {
+            RequirePage::redirect('home/error');
+        }
         $project = new Project; 
         $task = new Task;
         $selectId = $project->selectId($id); 

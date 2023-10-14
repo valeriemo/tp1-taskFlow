@@ -21,14 +21,17 @@ class ControllerTask extends Controller
     {
         $task = new task; 
         $insert = $task->insert($_POST); 
-        RequirePage::redirect('project');
+        RequirePage::redirect('project/show/' . $_POST['project_idProject']);
     }
 
     public function delete($id){
 
         $task = new Task;
+        $projet = $task->selectId($id);
+        $idProject = $projet['project_idProject'];
+
         $task->delete($id);
-        RequirePage::redirect('project');
+        RequirePage::redirect('project/show/' . $idProject);
 
     }
 }

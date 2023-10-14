@@ -20,7 +20,19 @@
             <label>
                 <input type="password" name="password" placeholder="Password" minlength="8" maxlength="20" required value="{{data.password}}">
             </label>
+            <label>
+                            <!-- Entrer un option super user ou regulier avec fillable -->
+            Membership Level 
+                <select name="privilege_idPri">
+                    <option value=""></option>
+                    {% for privilege in privileges %}
+                    <option value="{{privilege.idPri}}">{{ privilege.privilege}}</option>
+                    {% endfor%}
+                </select>
+            </label> 
             <input type="submit" value="Save">
+
+
         </form>
     </div>
 </body>

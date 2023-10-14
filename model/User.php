@@ -13,6 +13,7 @@ class User extends Crud{
         'username',
         'email',
         'password',
+        'privilege_idPri'
     ];
 
     public function checkUser($username, $password){ 
@@ -29,7 +30,8 @@ class User extends Crud{
                 session_regenerate_id();
                 $_SESSION['idUser'] = $user['idUser'];
                 $_SESSION['username'] = $user['username'];
-                $_SESSION['fingerPrint'] = md5($_SERVER['REMOTE_ADDT'] . $_SERVER['HTTP_USER_AGENT']);
+                $_SESSION['privilege'] = $user['privilege_idPri'];
+                $_SESSION['fingerPrint'] = md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
                 return true;
             } else {
                 echo 'no';

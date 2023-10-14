@@ -41,12 +41,14 @@ abstract class Crud extends PDO
      */
     public function selectAllById($value)
     {
-        // if ($this->table == 'project') {
-        //     $key = $this->foreignKey;
-        //     // si c'est task
-        // } elseif ($this->table == 'task') {
-        //     $key = $this->foreignKey2;
-        // }
+        if ($this->table == 'project') {
+            $key = $this->foreignKey;
+            // si c'est task
+        } elseif ($this->table == 'task') {
+            $key = $this->foreignKey2;
+        } else {
+            $key = $this->primaryKey;
+        }
 
         $sql = "SELECT * FROM $this->table WHERE $key = :$key";
         $stmt = $this->prepare($sql);

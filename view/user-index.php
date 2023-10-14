@@ -6,11 +6,11 @@
 
 <h3>Your projects</h3>
 
-{% if project == null %}
+{% if projects == null %}
 <p>No project yet !</p>
 {% else %}
 <div class="liste-projet">
-    {% for project in project %}
+    {% for project in projects %}
     <section  class="project boite">
     <a href="{{path}}project/show/{{project.idProject}}">{{project.name}}</a>
     </section>
