@@ -6,12 +6,20 @@
 nav{
     height: 50px;
     display: flex;
-    gap: 20px;
+    gap: 300px;
     align-items: center;
     margin-top: 30px;
     margin-bottom: 80px;
 }
-nav > a{
+nav .emoji{
+    font-size: 80px;
+}
+nav > div{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+nav > div a{
     text-decoration: none;
     color: black;
     font-family: 'Open Sans', sans-serif;
@@ -81,6 +89,22 @@ label{
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+}
+label > select{
+    background-color: #fbeee0;
+    border: 2px solid black;
+    box-shadow: black 4px 4px 0 0;
+    color: black;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 14px 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+}
+label > select::selection{
+    background-color:#7CE577;
 }
 p {
     color: black;
@@ -252,6 +276,10 @@ table .button-74::before{
     box-shadow: black 2px 2px 0 0;
     transform: translate(2px, 2px);
 }
+.button-74 > a{
+    text-decoration: none;
+    color: black;
+}
 .center{
     display: flex;
     gap: 20px;
@@ -261,4 +289,33 @@ table .button-74::before{
     max-width: max-content;
     margin-left: auto;
     margin-right: auto;
+}
+
+.boite-member{
+    display: flex;
+    gap: 50px;
+}
+.boite-member > div{
+    display: flex;
+    background-color: #fbeee0;
+    padding: 30px;
+    flex-direction: column;
+    flex-basis: 50ch;
+    align-items: center;
+    max-height: max-content;
+    border: 2px solid black;
+    box-shadow: black 4px 4px 0 0;
+    & p{
+        border: 0px;
+        margin: 0px;
+        padding-top: 20px;
+    }
+    & h2{
+        border: 0px;
+        margin: 0px;
+        padding-bottom: 20px;
+    }
+    & ul{
+        margin: 0px;
+    }
 }

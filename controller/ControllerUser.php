@@ -2,6 +2,8 @@
 RequirePage::model('User');
 RequirePage::model('Project');
 RequirePage::model('Privilege');
+RequirePage::library('Mailer');
+
 
 
 class ControllerUser extends Controller
@@ -10,10 +12,8 @@ class ControllerUser extends Controller
     public function index()
     {
         CheckSession::sessionAuth();
-        var_dump($_SESSION['idUser']);
-        //Je vais chercher les infos de l'utilisateur connecté
         $user = new User;
-        $select = $user->selectId($_SESSION['idUser']);
+        $select = $user->selectId($_SESSION['idUser'], 'idUser');
         //Je vais chercher les projets de l'utilisateur connecté
         $projectUser = new Project;
         $projects = $projectUser->selectAllById($_SESSION['idUser']); 
@@ -50,7 +50,7 @@ class ControllerUser extends Controller
         $val->name('username')->value($username)->max(20)->min(4);
         $val->name('password')->value($password)->pattern('alphanum')->min(6)->max(20);
         $val->name('email')->value($email)->pattern('email')->required()->max(50);
-
+        $val->name('privilege_idPri')->value($privilege_idPri)->required();
     
         // Si toutes les validations passent avec succès.
         if ($val->isSuccess()) {
@@ -70,7 +70,13 @@ class ControllerUser extends Controller
     
             // Insère les données du formulaire dans la base de données.
             $insert = $user->insert($_POST);
-            $select = $user->selectId($insert);
+            $select = $user->selectId($insert, 'idUser');
+
+            // On va vouloir envoyer le email de bienvenue
+            $mail = new SendMail();
+            $body = $mail->craftEmailBody($select);
+            $mail->sendMail($select['email'],$select['username'], $body);
+
             // Redirige l'utilisateur vers la page 'user/create'.
             Twig::render('user-index.php', ['user' => $select]);
 
@@ -86,6 +92,10 @@ class ControllerUser extends Controller
     // Méthode pour afficher les détails d'un client spécifique
     public function show($id)
     {
+        if($id == null){
+            RequirePage::redirect('user/index');
+        }
+        CheckSession::sessionAuth();
         $user = new User; 
         $selectAllById = $user->selectAllById($id); 
 

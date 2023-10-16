@@ -27,7 +27,7 @@ class ControllerTask extends Controller
     public function delete($id){
 
         $task = new Task;
-        $projet = $task->selectId($id);
+        $projet = $task->selectId($id, 'idTask');
         $idProject = $projet['project_idProject'];
 
         $task->delete($id);

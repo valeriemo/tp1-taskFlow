@@ -18,16 +18,16 @@ abstract class Crud extends PDO
     }
 
     /**
-     *  Méthode pour effectuer une sélection (READ) par ID
+     *  Méthode pour effectuer une sélection (READ) par ID ou autre
      */
-    public function selectId($value)
+    public function selectId($value, $champs)
     {
-        $sql = "SELECT * FROM $this->table WHERE $this->primaryKey = :$this->primaryKey";
+        $sql = "SELECT * FROM $this->table WHERE $champs = :champs";
         $stmt = $this->prepare($sql);
-        $stmt->bindValue(":$this->primaryKey", $value);
+        $stmt->bindValue(':champs', $value);
         $stmt->execute();
         $count = $stmt->rowCount();
-
+    
         if ($count == 1) {
             return $stmt->fetch();
         } else {
@@ -35,6 +35,7 @@ abstract class Crud extends PDO
             exit;
         }
     }
+
 
     /**
      * Méthode pour sélectionner plusieurs éléments avec une foreign key
@@ -64,20 +65,12 @@ abstract class Crud extends PDO
     }
     // Méthode pour effectuer une insertion (CREATE) d'un nouvel enregistrement
     public function insert($data){
+
         $data_keys = array_fill_keys($this->fillable, '');
-        // print_r($this->fillable);
-        // echo '<br><br>';
-        // print_r($data_keys);
-        // echo '<br><br>';
-        // print_r($data);
         $data = array_intersect_key($data, $data_keys);
-        // print_r($data);
-        // die();
         $fieldName = implode(', ', array_keys($data));
         $fieldValue = ":".implode(', :', array_keys($data));
         $sql = "INSERT INTO $this->table ($fieldName) VALUES ($fieldValue)";
-
-       //return $sql;
 
        $stmt = $this->prepare($sql);
         foreach($data as $key=>$value){

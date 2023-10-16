@@ -7,6 +7,7 @@ class User extends Crud{
 
     public $table = 'user';
     public $primaryKey = 'idUser';
+    public $username = 'username';
 
     public $fillable = [
         'idUser',
@@ -16,6 +17,12 @@ class User extends Crud{
         'privilege_idPri'
     ];
 
+    /**
+     * Méthode qui permet de hasher le mot de passe
+     * 
+     * @param string $password
+     * @return string
+     */
     public function checkUser($username, $password){ 
          
         $sql = "SELECT * FROM $this->table WHERE username = :$username";

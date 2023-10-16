@@ -37,7 +37,7 @@ class ControllerProject extends Controller
         }
         $project = new Project; 
         $task = new Task;
-        $selectId = $project->selectId($id); 
+        $selectId = $project->selectId($id, 'idProject'); 
         $allTask = $task->selectAllById($selectId['idProject']);
         Twig::render('project-show.php', ['project' => $selectId,'task' => $allTask]);
     }
@@ -45,7 +45,7 @@ class ControllerProject extends Controller
     public function edit($id)
     {
         $project = new Project; 
-        $selectId = $project->selectId($id); 
+        $selectId = $project->selectId($id, 'idProject'); 
         twig::render("project-edit.php", ['project' => $selectId]);
     }
 

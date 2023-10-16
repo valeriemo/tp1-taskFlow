@@ -1,5 +1,6 @@
 <?php
 RequirePage::model('Project');
+RequirePage::library('Mailer');
 
 class ControllerHome extends Controller
 {

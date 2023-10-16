@@ -22,18 +22,34 @@
             </label>
             <label>
                             <!-- Entrer un option super user ou regulier avec fillable -->
-            Membership Level 
                 <select name="privilege_idPri">
-                    <option value=""></option>
+                    <option>Membership Level</option>
                     {% for privilege in privileges %}
-                    <option value="{{privilege.idPri}}">{{ privilege.privilege}}</option>
+                    <option name="privilege_idPri" value="{{privilege.idPri}}">{{ privilege.privilege}}</option>
                     {% endfor%}
                 </select>
             </label> 
             <input type="submit" value="Save">
-
-
         </form>
+
+        <section class="boite-member">
+            <div>
+                <h2>Regular</h2>
+                <ul>
+                    <li>Maximum of 3 projects</li>
+                    <li>Maximum of 5 tasks by projects</li>
+               </ul>
+               <p>Free</p>
+            </div>
+            <div>
+                <h2>SuperUser</h2>
+                <ul>
+                    <li>Unlimited projects</li>
+                    <li>Unlimited tasks</li>
+               </ul>
+               <p>$8,99/month</p>
+            </div>
+        </section>
     </div>
 </body>
 

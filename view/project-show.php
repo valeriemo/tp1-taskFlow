@@ -1,4 +1,4 @@
-{{ include('header.php', {title: 'project'}) }}
+{{ include('header.php', {title: 'Project'}) }}
 
 <main>
     <section>

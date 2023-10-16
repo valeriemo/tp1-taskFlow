@@ -16,7 +16,16 @@ class Twig
             'auto_reload' => true,
         ));
 
-        $twig->addGlobal('path', PATH_DIR);         
+        $twig->addGlobal('path', PATH_DIR);    
+        
+        if(isset($_SESSION['fingerPrint']) && $_SESSION['fingerPrint'] == md5($_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'])){
+            $guest = false; 
+        }else{
+            $guest = true; 
+        }
+        $twig->addGlobal('session', $_SESSION);
+        $twig->addGlobal('guest', $guest);   
+
         echo $twig->render($template, $data);
     }
 }

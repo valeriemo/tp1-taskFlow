@@ -1,4 +1,4 @@
-{{ include('header.php', {title: 'liste de project'}) }}
+{{ include('header.php', {title: 'Projects'}) }}
 
 <main class="project">
     <h1>All projects</h1>

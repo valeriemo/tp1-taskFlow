@@ -1,4 +1,4 @@
-{{ include('header.php', {title: 'project'}) }}
+{{ include('header.php', {title: 'Edit project'}) }}
 
 <main>
 <div class="grid">

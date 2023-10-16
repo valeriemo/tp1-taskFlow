@@ -22,7 +22,7 @@ class ControllerLogin extends Controller{
         $val = new Validation();
 
         $val->name('username')->value($username)->required()->pattern('alphanum')->min(3)->max(20);
-        $val->name('password')->value($password)->pattern('alphanum')->min(8)->max(20);
+        $val->name('password')->value($password)->required()->pattern('alphanum')->min(8)->max(20);
 
         if ($val->isSuccess()) {
             $user = new User;
