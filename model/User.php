@@ -8,6 +8,8 @@ class User extends Crud{
     public $table = 'user';
     public $primaryKey = 'idUser';
     public $username = 'username';
+    public $idUser = 'idUser';
+    public $privilege = 'privilege_idPri';
 
     public $fillable = [
         'idUser',
@@ -30,7 +32,6 @@ class User extends Crud{
         $stmt->bindValue(":$username", $username);
         $stmt->execute();
         $count = $stmt->rowCount();
-        
         if ($count === 1) {
             $user = $stmt->fetch();
             if (password_verify($password, $user['password'])) {

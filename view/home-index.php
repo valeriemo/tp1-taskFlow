@@ -1,4 +1,4 @@
-{{ include('header.php', {title: 'Welcome'}) }}
+{{ include('header.php', {title: 'Welcome to taskflow'}) }}
 
 
 <main>

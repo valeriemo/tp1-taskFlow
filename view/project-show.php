@@ -10,7 +10,6 @@
             <p class="button-74"><span>Due date : </span>{{ project.dueDate}}</p>
             <div class="task-container">
                 <h4 class="button-74">To do :</h4>
-                <a class="button-74" href="{{path}}task/create/{{project.idProject}}">New task</a>
                 {% if task == 'Nothing' %}
                 <p>No task</p>
                 {% else %}
@@ -45,6 +44,11 @@
                     </tbody>
                     {% endif %}
                 </table>
+                {% if privilege == 1 and nbTask >= 3 %}
+                <p>You have reached the maximum number of tasks allowed for this project. Upgrate to SuperUser !</p>
+                {% else %}
+                <a class="button-74" href="{{path}}task/create/{{project.idProject}}">New task</a>
+                {% endif %}
             </div>
 
         </section>

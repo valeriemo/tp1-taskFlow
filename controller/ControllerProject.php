@@ -6,55 +6,78 @@ RequirePage::model('Task');
 
 class ControllerProject extends Controller
 {
-
+    /**
+     * Méthode pour afficher la page d'accueil du user->Project Board
+     */
     public function index()
     {
-        $project = new Project; 
-        $select = $project->select('idProject'); 
-        Twig::render("project-index.php", ['project' => $select]);
+        CheckSession::sessionAuth();
+        RequirePage::redirect('user/index');
     }
 
-    // Méthode pour afficher le formulaire de création d'un projet
+    /**
+     * Méthode pour afficher la page de création d'un projet
+     */
     public function create($id)
     {
         Twig::render("project-create.php", ['idUser' => $id]);
     }
 
-    // Méthode pour traiter la soumission du formulaire de création d'un projet
+    /**
+     * Méthode pour créer un projet
+     */
     public function store()
     {
-        $project = new Project; 
-        $insert = $project->insert($_POST); 
-        RequirePage::redirect('project');
+        CheckSession::sessionAuth();
+        $project = new Project;
+        $insert = $project->insert($_POST);
+        RequirePage::redirect('user/index');
     }
 
-    // Méthode pour afficher les détails d'un projet spécifique
+    /**
+     * Méthode pour afficher un projet spécifique
+     */
     public function show($id = null)
     {
-        // Méthode pour protéger l'accès à la page
+        CheckSession::sessionAuth();
         if ($id == null) {
             RequirePage::redirect('home/error');
         }
-        $project = new Project; 
+        $project = new Project;
         $task = new Task;
-        $selectId = $project->selectId($id, 'idProject'); 
+        $selectId = $project->selectId($id, 'idProject');
         $allTask = $task->selectAllById($selectId['idProject']);
-        Twig::render('project-show.php', ['project' => $selectId,'task' => $allTask]);
+        $nbTask = count($allTask);
+        if (is_array($allTask)) {
+            $nbTask = count($allTask);
+        } else {
+            $nbTask = 0;
+        }
+        $privilege = $_SESSION['privilege'];
+        Twig::render('project-show.php', ['project' => $selectId, 'task' => $allTask, 'nbTask' => $nbTask, 'privilege' => $privilege]);
     }
 
+    /**
+     * Méthode qui affiche la page édition d'un projet
+     */
     public function edit($id)
     {
-        $project = new Project; 
-        $selectId = $project->selectId($id, 'idProject'); 
+        CheckSession::sessionAuth();
+        $project = new Project;
+        $selectId = $project->selectId($id, 'idProject');
         twig::render("project-edit.php", ['project' => $selectId]);
     }
 
+    /**
+     * Méthode pour mettre à jour un projet
+     */
     public function update()
     {
+        CheckSession::sessionAuth();
         $project = new Project;
         $update = $project->update($_POST);
         if ($update) {
-            RequirePage::redirect('project');
+            RequirePage::redirect('user/index');
         } else {
             print_r($update);
         }

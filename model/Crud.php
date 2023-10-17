@@ -86,6 +86,7 @@ abstract class Crud extends PDO
      */
     public function update($data)
     {
+
         $fieldName = Null;
         foreach ($data as $key => $value) {
             $fieldName .= "$key = :$key, ";
@@ -96,6 +97,7 @@ abstract class Crud extends PDO
         foreach ($data as $key => $value) {
             $stmt->bindValue(":$key", $value);
         }
+
         if ($stmt->execute()) {
             return true;
         } else {

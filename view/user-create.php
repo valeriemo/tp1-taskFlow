@@ -1,4 +1,4 @@
-{{ include('header.php', {title: 'creer un user'}) }}
+{{ include('header.php', {title: 'create new user'}) }}
 
 
 <body class="align">
@@ -21,14 +21,16 @@
                 <input type="password" name="password" placeholder="Password" minlength="8" maxlength="20" required value="{{data.password}}">
             </label>
             <label>
-                            <!-- Entrer un option super user ou regulier avec fillable -->
+                <!-- Cacher l'option Admin pour les utilisateurs -->
                 <select name="privilege_idPri">
                     <option>Membership Level</option>
                     {% for privilege in privileges %}
-                    <option name="privilege_idPri" value="{{privilege.idPri}}">{{ privilege.privilege}}</option>
+                        {% if privilege.idPri != 3 %}
+                        <option value="{{ privilege.idPri }}">{{ privilege.privilege }}</option>
+                        {% endif %}
                     {% endfor%}
                 </select>
-            </label> 
+            </label>
             <input type="submit" value="Save">
         </form>
 
@@ -38,16 +40,16 @@
                 <ul>
                     <li>Maximum of 3 projects</li>
                     <li>Maximum of 5 tasks by projects</li>
-               </ul>
-               <p>Free</p>
+                </ul>
+                <p>Free</p>
             </div>
             <div>
                 <h2>SuperUser</h2>
                 <ul>
                     <li>Unlimited projects</li>
                     <li>Unlimited tasks</li>
-               </ul>
-               <p>$8,99/month</p>
+                </ul>
+                <p>$8,99/month</p>
             </div>
         </section>
     </div>

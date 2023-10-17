@@ -10,9 +10,7 @@ class ControllerHome extends Controller
      */
     public function index()
     {
-        $projects = new Project();
-        $allProjects = $projects->select("idProject");
-        Twig::render("home-index.php", ["projects" => $allProjects]);
+        Twig::render("home-index.php");
     }
 
     /**

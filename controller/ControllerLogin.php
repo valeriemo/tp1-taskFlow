@@ -1,23 +1,21 @@
 <?php
 RequirePage::model('User');
 
-// mon login est sur home-index.php
 class ControllerLogin extends Controller{
 
     public function index(){
         Twig::render('login.php');
     }
 
+    /**
+     * Méthode pour authentifier un utilisateur et le rediriger vers la page d'accueil 
+     */
     public function auth(){
-        // vérification a faire lorsque nous utilisons une methode post
         if ($_SERVER["REQUEST_METHOD"] != "POST"){
             RequirePage::redirect('home/index');
             exit();
         }
-
         extract($_POST);
-
-        // Validation
         RequirePage::library('Validation');
         $val = new Validation();
 
@@ -31,17 +29,17 @@ class ControllerLogin extends Controller{
             }else{
                 RequirePage::redirect('home/error');
             }
-            
         }else {
             $errors = $val->displayErrors();
             Twig::render('login.php', ['errors'=>$errors, 'data'=>$_POST]);
         }
     }
 
+    /**
+     * Méthode pour déconnecter un utilisateur
+     */
     public function logout(){
         session_destroy();
         RequirePage::redirect('login');
     }
 }
-
-?>

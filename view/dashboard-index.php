@@ -14,6 +14,7 @@
                     <th>Ip Address</th>
                     <th>Date</th>
                     <th>Page</th>
+                    <th>Show User</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +24,11 @@
                     <td>{{ log.ipAddress }}</td>
                     <td>{{ log.date }}</td>
                     <td>{{ log.pageUrl }}</td>
+                    {% if log.username != 'guest' %}
+                        <td><a class="button-74" href="{{path}}/dashboard/user/{{log.username}}">Show user</a></td>
+                    {% else %}
+                        <td>Guest</td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>
