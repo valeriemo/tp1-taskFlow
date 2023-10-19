@@ -44,8 +44,8 @@
                     </tbody>
                     {% endif %}
                 </table>
-                {% if privilege == 1 and nbTask >= 3 %}
-                <p>You have reached the maximum number of tasks allowed for this project. Upgrate to SuperUser !</p>
+                {% if privilege == 1 and nbTask >= 5 %}
+                <p class="msg-action">You have reached the maximum number of tasks allowed for this project. Upgrate to SuperUser !</p>
                 {% else %}
                 <a class="button-74" href="{{path}}task/create/{{project.idProject}}">New task</a>
                 {% endif %}

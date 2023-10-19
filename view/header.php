@@ -22,11 +22,13 @@
         </div>
         {% else %}
         <div>
-            <a class="button-74" href="{{path}}user/index">Project board</a>
-            <a class="button-74" href="{{path}}login/logout">Logout</a>
             {% if session.privilege == 3 %}
             <a class="button-74" href="{{path}}dashboard/index">Dashboard</a>
+            <a class="button-74" href="{{path}}/dashboard/users">Show all Users</a>
+            {% else %}
+            <a class="button-74" href="{{path}}user/index">Project board</a>
             {% endif %}
+            <a class="button-74" href="{{path}}login/logout">Logout</a>
         </div>
         {% endif %}
 

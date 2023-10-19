@@ -1,7 +1,8 @@
 <?php
 require_once('Crud.php');
 
-class Log extends Crud{
+class Log extends Crud
+{
 
     public $table = 'log';
     public $primaryKey = 'idLog';

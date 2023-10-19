@@ -67,4 +67,15 @@ class ControllerDashboard extends Controller
             RequirePage::redirect('home/error');
         }
     }
+
+    public function users(){
+        if ($_SESSION['privilege'] == 3) {
+            $user = new User;
+            $users = $user->select('idUser', 'ASC');
+            Twig::render("dashboard-users.php", ['users' => $users]);
+        } else {
+            RequirePage::redirect('home/error');
+        }
+
+    }
 }

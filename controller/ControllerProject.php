@@ -47,7 +47,6 @@ class ControllerProject extends Controller
         $task = new Task;
         $selectId = $project->selectId($id, 'idProject');
         $allTask = $task->selectAllById($selectId['idProject']);
-        $nbTask = count($allTask);
         if (is_array($allTask)) {
             $nbTask = count($allTask);
         } else {

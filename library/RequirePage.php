@@ -12,9 +12,10 @@ class RequirePage
         $filePath = 'model/' . $page . '.php';
         return require_once($filePath);
     }
-    
-    static public function library($page){
-        return require_once('library/'.$page.'.php');
+
+    static public function library($page)
+    {
+        return require_once('library/' . $page . '.php');
     }
 
     /**

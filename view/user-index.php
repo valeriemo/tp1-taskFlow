@@ -19,7 +19,7 @@
 
 
     {% if user.privilege_idPri == 1 and nbProjects >= 3 %}
-    <p>You have reached the maximum number of projects allowed for your account. Upgrate to SuperUser !</p>
+    <p class="msg-action">You have reached the maximum number of projects allowed for your account. Upgrate to SuperUser !</p>
     {% else %}
     <a class="button-74" href="{{path}}project/create/{{user.idUser}}">Create a new project</a>
     {% endif %}

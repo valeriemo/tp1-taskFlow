@@ -8,8 +8,6 @@ use PHPMailer\PHPMailer\Exception;
 
 class SendMail
 {
-
-
     public function __construct()
     {
         $mail = new PHPMailer(true);
@@ -21,8 +19,12 @@ class SendMail
         $this->mail->Username = 'postmaster@sandbox77b9fd869c3c4fc98c466be441955fdb.mailgun.org';
         $this->mail->Port = 587;
         $this->mail->Password   = 'ce8026ba745d36f3ca7cf229e9e645d0-5465e583-1de6cdbf';
+        $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     }
 
+    /**
+     * Méthode pour envoyer un email
+     */
     public function sendMail($emailAddress, $username, $body, $subject = 'Bienvenue sur TaskFlow')
     {
         try {
@@ -35,6 +37,10 @@ class SendMail
             echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
         }
     }
+
+    /**
+     * Méthode pour créer le corps du message
+     */
     public function craftEmailBody($user)
     {
         //placer dans balise html etc
@@ -42,6 +48,3 @@ class SendMail
         return $body;
     }
 }
-
-
-

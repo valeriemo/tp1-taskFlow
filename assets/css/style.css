@@ -319,3 +319,8 @@ table .button-74::before{
         margin: 0px;
     }
 }
+.msg-action{
+    font-size: 18px;
+    font-weight: 800;
+    color: crimson;
+}

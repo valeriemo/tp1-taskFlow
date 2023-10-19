@@ -77,4 +77,18 @@ class ControllerUser extends Controller
             Twig::render('user-create.php', ['errors' => $errors]);
         }
     }
+
+    /**
+     * Méthodes d'une page qui n'existe pas pour éviter les erreurs php je l'a protège
+     */
+    public function show()
+    {
+        CheckSession::sessionAuth();
+        RequirePage::redirect('home/error');
+    }
+    public function edit()
+    {
+        CheckSession::sessionAuth();
+        RequirePage::redirect('home/error');
+    }
 }

@@ -27,7 +27,7 @@ abstract class Crud extends PDO
         $stmt->bindValue(':champs', $value);
         $stmt->execute();
         $count = $stmt->rowCount();
-    
+
         if ($count == 1) {
             return $stmt->fetch();
         } else {
@@ -64,21 +64,22 @@ abstract class Crud extends PDO
         }
     }
     // Méthode pour effectuer une insertion (CREATE) d'un nouvel enregistrement
-    public function insert($data){
+    public function insert($data)
+    {
 
         $data_keys = array_fill_keys($this->fillable, '');
         $data = array_intersect_key($data, $data_keys);
         $fieldName = implode(', ', array_keys($data));
-        $fieldValue = ":".implode(', :', array_keys($data));
+        $fieldValue = ":" . implode(', :', array_keys($data));
         $sql = "INSERT INTO $this->table ($fieldName) VALUES ($fieldValue)";
 
-       $stmt = $this->prepare($sql);
-        foreach($data as $key=>$value){
+        $stmt = $this->prepare($sql);
+        foreach ($data as $key => $value) {
             $stmt->bindValue(":$key", $value);
         }
-       $stmt->execute();
+        $stmt->execute();
 
-       return $this->lastInsertId();
+        return $this->lastInsertId();
     }
 
     /**
